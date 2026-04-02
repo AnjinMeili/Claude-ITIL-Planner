@@ -111,7 +111,7 @@ At minimum, success criteria must answer: how will we know this is done, and who
 
 ## SCOPE.md Format
 
-Write SCOPE.md at the root of the relevant working context (project root, planning directory, or feature branch root). Use this structure:
+Write SCOPE.md to `.planning/SCOPE.md` — the same directory as all other Layer 1 artifacts. The orchestrator and plan-critic both check `.planning/` for this file; writing it elsewhere will cause prerequisite checks to miss it. Use this structure:
 
 ```markdown
 # Scope: [Task or Feature Name]

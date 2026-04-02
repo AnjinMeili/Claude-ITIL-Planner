@@ -14,5 +14,6 @@
     "./agents/code-reviewer.md",
     "./agents/plan-critic-evaluator.md",
     "./agents/release-manager.md"
-  ]
+  ],
+  "tests": "./tests/"
 }

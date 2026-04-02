@@ -125,6 +125,8 @@ Do not create ADRs for implementation details. ADRs record architectural choices
 
 **Do not design beyond SPEC.md.** If a use case is not in SPEC.md, do not design for it. If a non-functional requirement is not in SPEC.md, do not add a component to address it. Design to the requirements as confirmed.
 
+**ADRs start as Proposed, not Accepted.** Write every new ADR with `Status: Proposed`. An ADR transitions to `Status: Accepted` only after a confidence-gate pass or explicit human confirmation. Do not mark an ADR Accepted at creation time.
+
 **Rejected alternatives are mandatory.** Every ADR must include at least one alternative that was considered and rejected. If the ADR has no alternatives, it is not ready to be marked Accepted — either find an alternative to evaluate or escalate the decision for human review.
 
 **Be honest in Consequences.** Every architectural decision has a downside. If the Harder section of an ADR is empty, the analysis is incomplete. Identify what becomes harder, more expensive, or more constrained as a result of the decision.
