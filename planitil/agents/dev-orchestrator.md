@@ -72,10 +72,11 @@ Apply these checks before routing any task:
 - Do not run `requirements-spec` before PROJECT.md exists.
 - Do not run `arch-design` before SPEC.md exists.
 - Do not run `failure-modes` or `plan-critic` before a PLAN.md or ARCH.md exists and `scope-anchor` has confirmed scope.
+- Do not run `plan-critic` before SCOPE.md exists. If SCOPE.md is absent, redirect to `scope-anchor` first — do not proceed and apply the auto-penalty silently.
 - Do not run `plan-critic` before a PLAN.md exists and `scope-anchor` has run.
 - Do not run `release-protocol` before QA.md exists.
 - Do not run `dev-discipline` before ARCH.md exists.
-- Do not run `qa-strategy` before SPEC.md and ARCH.md both exist.
+- Do not run `qa-strategy` before SPEC.md, ARCH.md, and DEV-SPEC.md all exist.
 
 ## Routing Protocol
 
@@ -116,8 +117,8 @@ After completion: [what to do next, including whether context-keeper runs]
 | Design architecture | SPEC.md | `arch-design` | context-keeper for ADRs |
 | Set up dev standards | ARCH.md | `dev-discipline` | context-keeper if standards decisions made |
 | Plan a feature/phase | SCOPE.md + SPEC.md | `failure-modes` → `plan-critic` | context-keeper after |
-| Check a plan for gaps | PLAN.md | `plan-critic` | context-keeper if significant gaps found |
-| Set up QA strategy | SPEC.md + ARCH.md | `qa-strategy` | None |
+| Check a plan for gaps | SCOPE.md + PLAN.md | `plan-critic` | context-keeper if significant gaps found |
+| Set up QA strategy | SPEC.md + ARCH.md + DEV-SPEC.md | `qa-strategy` | None |
 | Create release protocol | QA.md | `release-protocol` | context-keeper |
 | Record a decision | None | `context-keeper` | None |
 | Resume after reset | Any | Load registers first | Read DECISIONS.md, ASSUMPTIONS.md, RISKS.md, DEBT.md |

@@ -192,10 +192,11 @@ The 8/10 threshold is intentionally forgiving on any one dimension while requiri
 ## Evaluator agent
 
 The scoring step (Step 2) is performed by the `plan-critic-evaluator` agent — a
-separate Haiku-class agent with Read-only tool access. This architectural separation
-ensures the model that wrote or revised the plan is not also the sole judge of its
-quality. The evaluator agent receives the plan file path and returns a structured
-scorecard. plan-critic orchestrates the loop; plan-critic-evaluator does the scoring.
+separate Haiku-class agent. This architectural separation ensures the model that wrote
+or revised the plan is not also the sole judge of its quality. The evaluator agent
+receives the plan file path and returns a structured scorecard; it also writes the
+scorecard to disk (Write access is scoped to SCORECARD-*.md output only).
+plan-critic orchestrates the loop; plan-critic-evaluator does the scoring.
 
 ---
 

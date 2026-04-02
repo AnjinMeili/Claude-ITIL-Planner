@@ -190,18 +190,18 @@ Registers are not isolated — link related entries across files:
 
 ## Session Continuity
 
-## Writing the Registers
-
-When appending or updating any register, write the updated file back to disk immediately at its canonical path under `.planning/`. Do not hold updates in memory — write after every invocation. Confirm with: `[REGISTER].md updated at .planning/[REGISTER].md`
-
 These four files survive `/clear` and session resets because they are written to disk. When resuming work after a reset:
 
-1. Read DECISIONS.md to restore the architectural context — what was decided and why.
+1. Read DECISIONS.md to restore architectural context — what was decided and why.
 2. Read ASSUMPTIONS.md to identify what the current plan depends on being true.
 3. Read RISKS.md to understand what the team is monitoring or mitigating.
 4. Read DEBT.md to know what was knowingly deferred and when it is due.
 
-Loading these registers takes less than five minutes and restores decision context that would otherwise require hours of conversation to re-derive.
+Loading these registers takes under five minutes and restores decision context that would otherwise require hours of conversation to re-derive.
+
+## Writing the Registers
+
+When appending or updating any register, write the updated file back to disk immediately at its canonical path under `.planning/`. Do not hold updates in memory — write after every invocation. Confirm with: `[REGISTER].md updated at .planning/[REGISTER].md`
 
 ## Worked Example
 

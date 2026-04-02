@@ -1,2 +1,4 @@
 .DS_Store
 testplan/
+.planning/
+.claude/settings.local.json
