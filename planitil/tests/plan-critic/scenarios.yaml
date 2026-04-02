@@ -1,0 +1,30 @@
+kind: skill
+ref: skills/plan-critic
+scenarios:
+  - name: fails-weak-plan
+    description: plan-critic should score a structurally weak plan below 7.5 and emit revision instructions
+    prompt: |
+      Please review this plan:
+
+      ## Plan: Add user authentication
+
+      1. Create login form
+      2. Add backend endpoint
+      3. Test and deploy
+
+      That's the full plan.
+    expectations:
+      keywords:
+        - "Scorecard"
+        - "FAIL"
+        - "Revision Required"
+        - "Completeness"
+    judge:
+      criteria: |
+        Score on:
+        - Is a structured scorecard produced with all 5 dimensions? (3pts)
+        - Does the plan correctly score below 7.5? (3pts)
+        - Are revision instructions specific to the failing dimensions? (4pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2

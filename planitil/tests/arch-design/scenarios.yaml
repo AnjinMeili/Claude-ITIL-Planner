@@ -1,0 +1,23 @@
+kind: skill
+ref: skills/arch-design
+scenarios:
+  - name: produces-arch-with-adr
+    description: arch-design should produce ARCH.md and at least one ADR with rejected alternatives
+    prompt: |
+      Design the architecture for the time-tracking CLI. Key decision: how to store
+      time entries (SQLite, flat JSON file, or remote API). SPEC.md is confirmed.
+    expectations:
+      keywords:
+        - "ARCH.md"
+        - "ADR"
+        - "Alternatives Rejected"
+        - "Consequences"
+    judge:
+      criteria: |
+        Score on:
+        - Is an ARCH.md structure produced? (3pts)
+        - Is at least one ADR produced with the Nygard format? (4pts)
+        - Does the ADR include rejected alternatives with reasons? (3pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2

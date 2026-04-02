@@ -1,0 +1,267 @@
+# SPEC.md — [Project Name]
+
+<!--
+  SPEC.md is the structured requirements contract between PROJECT.md (what problem)
+  and ARCH.md (how to solve it).
+
+  Prerequisites:
+  - PROJECT.md must be confirmed before writing any use case
+  - Actors come from PROJECT.md's Target Audience section
+  - Acceptance criteria must map to PROJECT.md's Success Metrics
+  - NFRs must respect PROJECT.md's Constraints
+
+  Do not include implementation decisions (database choices, framework selections,
+  API designs). Those belong in ARCH.md.
+
+  ID scheme:
+  - Use cases: UC-01, UC-02, UC-03...
+  - Acceptance criteria: AC-NN-NN (e.g., AC-01-02 = use case 1, criterion 2)
+  - NFRs: NFR-P-01 (Performance), NFR-S-01 (Security), NFR-R-01 (Reliability), NFR-O-01 (Observability)
+  - Dependencies: DEP-01, DEP-02...
+-->
+
+**Status:** Draft | Confirmed
+**References:** [PROJECT.md](../PROJECT.md)
+**Confirmed by:** [Name, Date]
+**Last updated:** [Date]
+
+---
+
+## 1. Use Cases
+
+<!--
+  3–10 use cases covering the primary workflows.
+  Each use case: actor from PROJECT.md Target Audience + goal-level action + outcome value.
+  Format: "As [actor], I need to [action] so that [outcome]."
+
+  Actors must match PROJECT.md Target Audience entries exactly.
+  Outcomes must trace to PROJECT.md Success Metrics.
+-->
+
+### UC-01 — [Short title describing the goal]
+
+**As** [specific actor from PROJECT.md Target Audience],
+**I need to** [action — what they do, at goal level, no UI or implementation language],
+**so that** [outcome — the value they receive, traceable to a success metric].
+
+**Traces to:** PROJECT.md Success Metric: [metric text or index]
+
+---
+
+### UC-02 — [Short title]
+
+**As** [actor],
+**I need to** [action],
+**so that** [outcome].
+
+**Traces to:** PROJECT.md Success Metric: [metric text or index]
+
+---
+
+### UC-03 — [Short title]
+
+**As** [actor],
+**I need to** [action],
+**so that** [outcome].
+
+**Traces to:** PROJECT.md Success Metric: [metric text or index]
+
+---
+
+<!-- Add UC-04 through UC-10 as needed. Keep total count between 3 and 10. -->
+
+---
+
+## 2. Feature Acceptance Criteria
+
+<!--
+  2–5 criteria per use case.
+  Format: Given [precondition] / When [action] / Then [observable outcome].
+  Test type label: Unit | Integration | E2E.
+  Every Then clause must pass the testability test:
+    1. Confirmable as true/false without human judgment
+    2. Confirmable without reading source code
+    3. Confirmable repeatably with fixed preconditions
+-->
+
+### UC-01: [Use case title]
+
+**AC-01-01** `(Unit)`
+- **Given:** [Precondition — specific system state, user state, data present]
+- **When:** [Single triggering action]
+- **Then:** [Specific, objective, observable outcome]
+
+**AC-01-02** `(Integration)`
+- **Given:** [Precondition]
+- **When:** [Action]
+- **Then:** [Outcome]
+
+<!-- Add AC-01-03 through AC-01-05 as needed. Minimum 2 criteria (happy path + failure path). -->
+
+---
+
+### UC-02: [Use case title]
+
+**AC-02-01** `(Unit)`
+- **Given:** [Precondition]
+- **When:** [Action]
+- **Then:** [Outcome]
+
+**AC-02-02** `(Integration)`
+- **Given:** [Precondition — failure condition or edge case]
+- **When:** [Action]
+- **Then:** [Outcome — error behavior, fallback, or rejection]
+
+---
+
+### UC-03: [Use case title]
+
+**AC-03-01** `(E2E)`
+- **Given:** [Precondition — full user context including prior steps completed]
+- **When:** [Action]
+- **Then:** [Outcome — visible to external system or different user]
+
+**AC-03-02** `(Unit)`
+- **Given:** [Precondition]
+- **When:** [Action]
+- **Then:** [Outcome]
+
+---
+
+<!-- Repeat pattern for each use case. -->
+
+---
+
+## 3. Non-Functional Requirements
+
+<!--
+  NFRs constrain how the system behaves across all use cases.
+  State explicit thresholds — no vague statements ("should be fast", "must be secure").
+  Every NFR must be traceable to a PROJECT.md constraint or success metric.
+-->
+
+### Performance
+
+**NFR-P-01:** [Specific latency target] — e.g., "CLI commands (excluding network calls) complete within [N]ms at p95 under normal load."
+
+**NFR-P-02:** [Specific throughput or startup requirement] — e.g., "CLI startup time from invocation to first output is under [N]ms on [target hardware baseline]."
+
+<!-- Add NFR-P-NN for each distinct performance requirement. -->
+
+**Traces to:** PROJECT.md Constraint: [constraint text]
+
+---
+
+### Security
+
+**NFR-S-01:** [Authentication requirement] — e.g., "All commands that read or write project data require an authenticated session. Unauthenticated commands exit with code [N] and output [specific message]."
+
+**NFR-S-02:** [Data handling requirement] — e.g., "API tokens are stored in [location] with [access controls]. Tokens are never written to stdout, log files, or error output."
+
+**NFR-S-03:** [Authorization requirement] — e.g., "Users can only read and write time entries they created. Attempting to modify another user's entry returns [specific error]."
+
+<!-- Add NFR-S-NN for each distinct security requirement. -->
+
+**Traces to:** PROJECT.md Constraint: [constraint text]
+
+---
+
+### Reliability
+
+**NFR-R-01:** [Error rate target] — e.g., "Sync operations succeed for [N]% of attempts when the external API is available and responding within its documented SLA."
+
+**NFR-R-02:** [Degraded-mode behavior] — e.g., "When [external dependency] is unavailable, [what the system does — stores locally, retries with backoff, etc.] without data loss."
+
+**NFR-R-03:** [Recovery requirement] — e.g., "No locally stored time entry is lost due to a CLI crash, SIGTERM, or SIGKILL."
+
+**Traces to:** PROJECT.md Constraint: [constraint text]
+
+---
+
+### Observability
+
+**NFR-O-01:** [Logging requirement] — e.g., "All sync operations log: timestamp, number of entries attempted, number succeeded, number failed, and any error messages — written to [location]."
+
+**NFR-O-02:** [Error output requirement] — e.g., "All user-facing errors include: a plain-language description, the specific cause (where determinable), and the remediation action."
+
+**NFR-O-03:** [Diagnostic requirement] — e.g., "A user experiencing a sync failure can identify whether the failure is due to authentication, network, or API error without reading source code."
+
+---
+
+## 4. External Dependencies
+
+<!--
+  List every external system this project integrates with.
+  "External" = anything outside the codebase: third-party APIs, internal services
+  owned by other teams, datastores not managed by this project, auth providers.
+
+  For each dependency, document: API/protocol, SLA, failure mode, owner.
+  Failure mode is the most commonly omitted field — define it before ARCH.md begins.
+-->
+
+### DEP-01 — [Dependency Name]
+
+| Field | Value |
+|---|---|
+| **API / Protocol** | [Specific API version or protocol, e.g., "Jira Cloud REST API v3"] |
+| **SLA** | [Availability and latency guarantees, e.g., "99.9% uptime, p95 < 2s per Atlassian public SLA"] |
+| **Failure mode** | [What this project does when dependency is unavailable, e.g., "Queue entries locally, retry on next sync invocation, surface count of pending entries in `track status`"] |
+| **Owner** | [Team or vendor responsible, e.g., "Atlassian (external vendor)"] |
+
+---
+
+### DEP-02 — [Dependency Name]
+
+| Field | Value |
+|---|---|
+| **API / Protocol** | [API/protocol] |
+| **SLA** | [SLA] |
+| **Failure mode** | [What this project does on failure] |
+| **Owner** | [Owner] |
+
+---
+
+<!-- Add DEP-NN for each external dependency. -->
+
+---
+
+## Traceability Index
+
+<!--
+  Cross-reference table linking SPEC.md IDs back to PROJECT.md.
+  Used by PLAN.md to verify that every task traces to a requirement.
+  Update this table when adding or removing use cases or NFRs.
+-->
+
+| ID | Type | Traces to (PROJECT.md) |
+|---|---|---|
+| UC-01 | Use Case | Target Audience: [primary audience goal] |
+| UC-02 | Use Case | Target Audience: [goal] / Success Metric: [metric] |
+| UC-03 | Use Case | Success Metric: [metric] |
+| NFR-P-01 | Performance | Constraint: [constraint] |
+| NFR-S-01 | Security | Constraint: [constraint] |
+| NFR-R-01 | Reliability | Constraint: [constraint] |
+| DEP-01 | Dependency | Constraint: [constraint] / UC-[NN] |
+
+---
+
+## Confirmation
+
+<!--
+  Confirm SPEC.md before starting ARCH.md or PLAN.md.
+  Every unresolved question must be answered or explicitly deferred before confirmation.
+-->
+
+- [ ] All use cases trace to a PROJECT.md audience goal or success metric
+- [ ] All acceptance criteria pass the testability test (objective, observable, repeatable)
+- [ ] Each use case has at least one failure-path acceptance criterion
+- [ ] All non-functional requirements have explicit, measurable thresholds
+- [ ] All external dependencies have defined failure modes
+- [ ] Traceability index is complete
+
+**Open questions:**
+- [Question 1 — owner, target resolution date]
+
+**Confirmed by:** ___________________  **Date:** ___________
+
+**Proceed to:** ARCH.md

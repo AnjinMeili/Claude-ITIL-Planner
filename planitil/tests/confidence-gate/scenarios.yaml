@@ -1,0 +1,21 @@
+kind: skill
+ref: skills/confidence-gate
+scenarios:
+  - name: surfaces-confidence-on-ambiguous-request
+    description: confidence-gate should emit a visible confidence % before acting on an ambiguous request
+    prompt: |
+      Refactor the authentication system to be more secure.
+    expectations:
+      keywords:
+        - "Confidence:"
+        - "Open uncertainties"
+        - "%"
+    judge:
+      criteria: |
+        Score on:
+        - Is a confidence percentage emitted as a visible output line? (4pts)
+        - Are open uncertainties listed by category? (3pts)
+        - If below threshold, are clarifying questions asked before acting? (3pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2

@@ -1,0 +1,93 @@
+# ADR-NNN: [Short imperative title — state what was decided, not what was considered]
+
+<!-- Numbering: sequential from 001. Never reuse a number. Superseded ADRs keep their number. -->
+
+**Status:** Proposed
+<!-- Options: Proposed | Accepted | Superseded by ADR-NNN | Deprecated -->
+<!-- Change to Accepted after review. Never delete — update Status and add superseding ADR number. -->
+
+---
+
+## Context
+
+<!--
+The forces at play. Answer: what made this decision necessary?
+Include:
+  - The specific requirement or constraint that created the need (reference SPEC.md or PROJECT.md)
+  - Competing forces (what made this hard — what two valid things are in tension)
+  - Any prior decisions that constrain the options here
+Do NOT include:
+  - The solution (that belongs in Decision)
+  - General background that does not affect the choice
+  - Personal preferences
+-->
+
+[Describe the situation that required this decision. Reference UC-NN, NFR-NN, or
+PROJECT.md constraints directly where relevant.]
+
+---
+
+## Decision
+
+<!--
+State what was decided. One to three sentences. The reader should understand the
+choice without needing to infer it from the consequences.
+-->
+
+[State the decision plainly. E.g., "Use SQLite via the stdlib sqlite3 module,
+stored at ~/.appname/data.db."]
+
+---
+
+## Consequences
+
+<!--
+What changes as a result of this decision. Be honest about both sides.
+An ADR that lists only benefits is not credible.
+
+Format:
+  Easier: [what becomes simpler, faster, or less risky]
+  Harder: [what becomes more complex, slower, or more constrained]
+  New constraints: [what future decisions this decision forecloses or shapes]
+-->
+
+**Easier:** [...]
+
+**Harder:** [...]
+
+**New constraints:** [...]
+
+---
+
+## Alternatives Rejected
+
+<!--
+Each alternative considered, with a clear rejection reason grounded in requirements.
+
+Rules:
+  - Include at least the most obvious alternative
+  - "Too complex" is not a reason — state what cost is not justified
+  - "Immature" is not a reason — state what capability is missing
+  - Personal preference is not a reason — ground in requirements or constraints
+
+Format each as:
+### [Alternative Name]
+[One sentence description]
+**Rejected because:** [Specific reason tied to requirements or constraints]
+-->
+
+### [Alternative 1 Name]
+
+[Brief description of this option]
+
+**Rejected because:** [Specific reason this option did not meet requirements or
+created unacceptable trade-offs — reference the constraint or requirement]
+
+### [Alternative 2 Name]
+
+[Brief description of this option]
+
+**Rejected because:** [Specific reason]
+
+<!-- Add more alternatives as needed. Remove this section only if this is genuinely
+     the only possible option — in that case, note why in the Context section instead. -->

@@ -1,0 +1,25 @@
+kind: skill
+ref: skills/qa-strategy
+scenarios:
+  - name: produces-qa-md-with-test-matrix
+    description: qa-strategy should produce QA.md with a test matrix and UAT criteria derived from SPEC.md
+    prompt: |
+      Create the QA strategy for the time-tracking CLI. We have unit tests for
+      business logic, integration tests for file I/O, and the user acceptance
+      criteria in SPEC.md (UC-01: start/stop tracking, UC-02: view summary).
+    expectations:
+      keywords:
+        - "QA.md"
+        - "UAT"
+        - "Coverage"
+        - "observability"
+        - "regression"
+    judge:
+      criteria: |
+        Score on:
+        - Is a test matrix produced with coverage targets? (3pts)
+        - Are UAT criteria human-executable (no code knowledge required)? (4pts)
+        - Is an observability spec included? (3pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2

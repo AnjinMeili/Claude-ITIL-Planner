@@ -1,0 +1,168 @@
+# PROJECT.md — [Project Name]
+
+<!--
+  PROJECT.md is the root artifact for this project. All downstream documents
+  (SCOPE.md, SPEC.md, ARCH.md, DEV-SPEC.md) trace back to this file.
+
+  Complete all five sections before starting any other artifact.
+  Do not include solution language, implementation choices, or design decisions.
+
+  When complete, mark this document as confirmed with a stakeholder sign-off note
+  at the bottom before proceeding to SCOPE.md.
+-->
+
+**Status:** Draft | Confirmed
+**Confirmed by:** [Name, Date]
+**Last updated:** [Date]
+
+---
+
+## 1. Problem Statement
+
+<!--
+  Write one paragraph. Cover three things:
+    1. Who experiences the problem (specific audience, not "users")
+    2. What the problem is (the unmet need or broken state of the world)
+    3. Why current solutions are insufficient (not "there is no tool" — what specifically fails)
+
+  No solution language. No feature descriptions. No implementation details.
+  If you mention a CLI, API, dashboard, or database, rewrite the paragraph.
+-->
+
+[One paragraph describing the problem, who has it, and why current approaches fail to solve it.]
+
+---
+
+## 2. Target Audience
+
+<!--
+  Name the primary audience specifically. "Developers" is not specific.
+  "Freelance backend engineers billing by the hour on client projects" is specific.
+
+  Secondary audiences are subordinate. Their needs do not override the primary audience.
+  State what each audience is trying to accomplish — not what the system will give them.
+-->
+
+**Primary:** [Specific archetype — role, context, and what they are trying to accomplish]
+
+**Secondary:**
+- [Audience 2] — trying to accomplish [goal]
+- [Audience 3] — trying to accomplish [goal]
+
+**Priority note:** When primary and secondary audience needs conflict, [primary audience] needs take precedence.
+
+---
+
+## 3. Success Metrics
+
+<!--
+  List 3–5 measurable outcomes. Each metric must be:
+    - Falsifiable: could be confirmed true or false by measurement
+    - Outcome-focused: describes a state of the world, not a feature
+    - Testable before launch: if it cannot be measured before release, rewrite it
+
+  Format: "[Audience] can/will [observable behavior] [measurable threshold]"
+
+  Not acceptable: "Has X feature", "Users like it", "Adoption grows"
+-->
+
+- [ ] [Metric 1 — measurable outcome with threshold]
+- [ ] [Metric 2 — measurable outcome with threshold]
+- [ ] [Metric 3 — measurable outcome with threshold]
+- [ ] [Metric 4 — measurable outcome with threshold, optional]
+- [ ] [Metric 5 — measurable outcome with threshold, optional]
+
+**Measurement approach:** [How these metrics will be collected and verified]
+
+---
+
+## 4. Timeline and Milestones
+
+<!--
+  Phases with target date ranges. Each phase ends at an observable milestone.
+
+  Observable milestone: an external observer can confirm it happened without reading source code.
+  Non-observable: "backend complete", "development done", "phase finished"
+
+  Milestone format: "Milestone: [Observable event that marks phase completion]"
+
+  The final milestone should directly map to the success metrics above.
+-->
+
+### Phase 1 — [Phase Name]
+**Target dates:** [Start] → [End]
+**Milestone:** [Observable event that proves this phase is complete]
+
+**Phase 1 includes:**
+- [Scope item]
+- [Scope item]
+
+---
+
+### Phase 2 — [Phase Name]
+**Target dates:** [Start] → [End]
+**Milestone:** [Observable event that proves this phase is complete]
+
+**Phase 2 includes:**
+- [Scope item]
+- [Scope item]
+
+---
+
+### Phase N — [Phase Name / Launch]
+**Target dates:** [Start] → [End]
+**Milestone:** [Observable event confirming success metrics are met]
+
+---
+
+## 5. Constraints
+
+<!--
+  Constraints exist on every project. Complete all four categories.
+  If a constraint is assumed rather than confirmed, mark it (assumed).
+
+  Leave no category blank. If genuinely unconstrained in a category, write
+  "No confirmed constraints — [what was investigated and by whom]"
+-->
+
+### Technical Constraints
+<!-- Required stack, deployment env, integration mandates, performance floors, data residency -->
+
+- [Constraint] — [confirmed | assumed — confirm with [person] before ARCH.md]
+- [Constraint]
+
+### Resource Constraints
+<!-- Team size, availability, budget ceiling, external dependencies with fixed timelines -->
+
+- [Constraint]
+- [Constraint]
+
+### Regulatory Constraints
+<!-- Compliance requirements, audit trail obligations, data handling rules -->
+
+- [Constraint, or "None confirmed — reviewed with [person] on [date]"]
+
+### Non-Negotiables
+<!-- Requirements that cannot be traded against scope or schedule under any circumstances -->
+
+- [Non-negotiable requirement]
+- [Non-negotiable requirement]
+
+---
+
+## Confirmation
+
+<!--
+  This section is completed when PROJECT.md is reviewed and confirmed.
+  Do not start SCOPE.md, SPEC.md, PLAN.md, or ARCH.md until this is signed off.
+-->
+
+- [ ] Problem statement reviewed and confirmed by [stakeholder]
+- [ ] Primary audience designation agreed upon
+- [ ] Success metrics are measurable and accepted as the definition of done
+- [ ] Timeline is realistic given resource constraints
+- [ ] All assumed constraints flagged for follow-up before architecture begins
+
+**Confirmed by:** ___________________  **Date:** ___________
+
+**Proceed to:** SCOPE.md

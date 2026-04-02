@@ -1,0 +1,247 @@
+# RELEASE.md — [Project Name] v[VERSION]
+
+<!--
+INSTRUCTIONS: Fill in all [BRACKETED] fields before use. Remove instruction
+comments when complete. This template must be completed before deployment begins.
+A RELEASE.md with blank fields is not a release plan.
+-->
+
+**Version:** [VERSION]
+**Deployment date:** [YYYY-MM-DD]
+**Deployer:** [Name/role of the person executing the deployment]
+**Runbook written by:** [Name] on [YYYY-MM-DD]
+**Rollback verified in staging:** YES / NO — [date verified, or reason not verified]
+
+---
+
+## Section 1: Deployment Runbook
+
+<!--
+Write one step per numbered item. Every step must have:
+- A verb-first action description
+- An exact command or link (copy-paste ready)
+- A measurable expected output (not a judgment — a specific string, exit code, or observable state)
+- A failure signal (what tells the operator to stop and evaluate rollback)
+
+Do not write "configure as needed" or "deploy the service" as a step.
+Every implicit action is a potential failure point.
+-->
+
+### Pre-Deployment Checks
+
+### Step 1: [Verify prerequisite — e.g., "Confirm test suite passes"]
+
+**Command:** [exact command]
+**Expected output:** [measurable signal of success]
+**Failure signal:** [observable indicator to stop and not proceed]
+
+### Step 2: [Verify prerequisite — e.g., "Confirm approval gates are cleared"]
+
+**Command or link:** [exact command or URL]
+**Expected output:** [measurable signal of success]
+**Failure signal:** [observable indicator to stop and not proceed]
+
+---
+
+### Deployment Execution
+
+### Step 3: [First deployment action — e.g., "Build and tag the release artifact"]
+
+**Command:** [exact command]
+**Expected output:** [measurable signal of success]
+**Failure signal:** [observable indicator — if this fails, execute rollback before proceeding]
+
+### Step 4: [Deploy to environment — e.g., "Apply to production cluster"]
+
+**Command:** [exact command]
+**Expected output:** [measurable signal of success]
+**Failure signal:** [observable indicator]
+
+<!--
+Add steps as needed. For database migrations: add a pre-migration backup step
+before the migration step, and document the rollback order explicitly.
+-->
+
+---
+
+### Post-Deployment Verification
+
+### Step [N]: [Smoke test — e.g., "Run post-deployment smoke test"]
+
+**Command:** [exact command]
+**Expected output:** [measurable signal — e.g., "All smoke tests passed (N/N)"]
+**Failure signal:** [e.g., "Any FAIL in output or non-zero exit code — execute rollback immediately"]
+
+### Step [N+1]: [Confirm deployment — e.g., "Verify health endpoint"]
+
+**Command:** [exact command — e.g., `curl -s -o /dev/null -w '%{http_code}' https://...`]
+**Expected output:** [e.g., "200"]
+**Failure signal:** [e.g., "Any code other than 200"]
+
+---
+
+## Section 2: Approval Gates
+
+<!--
+Every gate must be cleared before deployment begins.
+Record evidence for each gate. A gate without evidence is not cleared.
+-->
+
+### Gate 1: QA Pass
+
+**Approver:** [Role — e.g., "QA lead" or "CI system"]
+**Evidence required:** Test suite ran and all tests passed.
+**Evidence location:** [path to test output file, or CI run URL]
+**CLEARED looks like:** [e.g., "pytest exits 0. Output saved to qa/run-YYYY-MM-DD.txt"]
+**BLOCKED looks like:** [e.g., "Any test failure in the output"]
+
+**Status:** [ ] CLEARED  [ ] BLOCKED
+**Cleared by:** _____________________ on ___________________
+
+---
+
+### Gate 2: Human Approval
+
+**Approver:** [A second person who is NOT the deployer and NOT the code author]
+**Evidence required:** Reviewer has read the diff, confirmed QA results, and approved.
+**Evidence location:** [PR approval record, or approval recorded below]
+**CLEARED looks like:** [e.g., "Reviewer signs off in this document"]
+**BLOCKED looks like:** [e.g., "No second approver available — do not deploy"]
+
+**Status:** [ ] CLEARED  [ ] BLOCKED
+**Cleared by:** _____________________ on ___________________
+
+---
+
+<!--
+Add additional gates as required by the project:
+
+### Gate 3: [e.g., Database Migration Review]
+
+**Approver:** [Role]
+**Evidence required:** [What must be verified]
+**Evidence location:** [Where the evidence lives]
+**CLEARED looks like:** [Observable state]
+**BLOCKED looks like:** [Observable state]
+
+**Status:** [ ] CLEARED  [ ] BLOCKED
+**Cleared by:** _____________________ on ___________________
+-->
+
+---
+
+## Section 3: Rollback Procedure
+
+<!--
+Complete this section BEFORE deployment. A rollback procedure written
+after something goes wrong is written under pressure with incomplete
+information. Write it now.
+
+The rollback trigger is NON-OPTIONAL. Every deployment must define
+the observable signal that means "execute rollback now."
+-->
+
+### Rollback Trigger
+
+**Observable signal:** [The specific, measurable condition that means "rollback now" —
+  e.g., "Smoke test exits non-zero" or "Error rate > 0.5% for 2 consecutive minutes"]
+**Who decides:** [Role — e.g., "Deployer" or "On-call engineer"]
+**Time threshold:** [How long to observe before declaring failure —
+  e.g., "Immediate on smoke test failure" or "5 minutes of sustained error rate"]
+
+---
+
+### Rollback Steps
+
+<!--
+Format identical to the deployment runbook.
+Number the steps. Include exact commands.
+-->
+
+### Rollback Step 1: [First rollback action — e.g., "Revert to previous image"]
+
+**Command:** [exact command]
+**Expected output:** [measurable signal that rollback step succeeded]
+**Failure signal:** [signal that rollback itself failed — escalate to team lead immediately]
+
+### Rollback Step 2: [e.g., "Verify system is restored"]
+
+**Command:** [exact command — same health check as post-deployment verification]
+**Expected output:** [measurable signal of restored health]
+**Failure signal:** [signal that system is not restored — escalate]
+
+<!--
+For deployments including database migrations: add a migration rollback step.
+Specify whether the rollback is "execute down migration" or "restore from backup."
+If it is "restore from backup," include the backup location and restore command.
+-->
+
+---
+
+**Rollback verified in staging:** YES / NO
+**Verification date:** [YYYY-MM-DD]
+**Verified by:** [Name]
+
+---
+
+## Section 4: Success Monitoring Window
+
+<!--
+"A few hours" is not a duration. Specify a number.
+Minimum: 30 minutes for most services.
+For payment, auth, or data pipeline deployments: 2–4 hours.
+-->
+
+### Monitoring Window
+
+**Duration:** [e.g., "30 minutes" or "2 hours"]
+**Start:** Immediately after smoke test passes and Gate 2 is cleared.
+**On-call contact:** [Name and contact method during the window]
+
+---
+
+### Metrics to Watch
+
+<!--
+List the specific metrics and where to view them.
+Include the dashboard URL or monitoring tool.
+-->
+
+| Metric | Dashboard / Location | Alert Threshold |
+|---|---|---|
+| Error rate | [URL or tool] | > [X]% sustained [N] min |
+| p99 latency | [URL or tool] | > [Nx] pre-deployment baseline |
+| [Business metric] | [URL or tool] | < [X] per [period] |
+
+**Pre-deployment p99 baseline:** [Record this immediately before deploying — "Xms"]
+
+---
+
+### Stable Signal
+
+**Deployment is confirmed stable when:**
+[Define the measurable end-of-window condition — e.g.,
+"Error rate below 0.1% for 30 consecutive minutes. p99 latency within 10% of
+pre-deployment baseline. Zero CRITICAL or ERROR log events attributable to this release."]
+
+**Confirmed stable by:** _____________________ at ___________________
+
+---
+
+## Deployment Record
+
+<!--
+Complete this after the deployment concludes.
+-->
+
+| Field | Value |
+|---|---|
+| Deployment start | |
+| Smoke test passed at | |
+| Gate 2 cleared at | |
+| Monitoring window start | |
+| Monitoring window end | |
+| Stable signal confirmed at | |
+| Rollback executed | YES / NO |
+| Rollback reason (if yes) | |
+| Final status | DEPLOYED / ROLLED BACK |

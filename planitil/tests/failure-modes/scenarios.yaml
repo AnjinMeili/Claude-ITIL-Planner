@@ -1,0 +1,23 @@
+kind: skill
+ref: skills/failure-modes
+scenarios:
+  - name: generates-planning-checklist
+    description: failure-modes should produce a named checklist with STOP conditions for a planning task
+    prompt: |
+      I'm about to write the implementation plan for adding a payment processing
+      integration to the checkout flow.
+    expectations:
+      keywords:
+        - "FLAG"
+        - "STOP condition"
+        - "Do any of these apply"
+        - "Failure Mode Check"
+    judge:
+      criteria: |
+        Score on:
+        - Is a task-type-specific checklist produced (not generic)? (4pts)
+        - Does each item have a named FLAG and an observable STOP condition? (3pts)
+        - Does the response ask for acknowledgment before proceeding? (3pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2

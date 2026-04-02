@@ -1,0 +1,23 @@
+kind: skill
+ref: skills/scope-anchor
+scenarios:
+  - name: triggers-on-feature-request
+    description: scope-anchor should activate when a user requests a new feature
+    prompt: |
+      I want to build a CLI tool that watches log files and sends alerts when
+      error patterns are detected. Let's get started.
+    expectations:
+      keywords:
+        - "SCOPE.md"
+        - "audience"
+        - "success criteria"
+        - "out of scope"
+    judge:
+      criteria: |
+        Score on:
+        - Does the response ask for or produce scope definition before planning? (4pts)
+        - Are all four mandatory questions addressed? (3pts)
+        - Is a SCOPE.md artifact produced or explicitly initiated? (3pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2

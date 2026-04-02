@@ -1,0 +1,25 @@
+kind: skill
+ref: skills/context-keeper
+scenarios:
+  - name: records-decision-to-register
+    description: context-keeper should append a structured entry to DECISIONS.md when a significant decision is made
+    prompt: |
+      Record this decision: we chose SQLite over flat JSON for storage because
+      it supports queries without loading the full file. We considered flat JSON
+      (rejected: slow queries at scale) and remote API (rejected: requires network,
+      breaks offline requirement).
+    expectations:
+      keywords:
+        - "DECISIONS.md"
+        - "DEC-"
+        - "Alternatives"
+        - "Status"
+    judge:
+      criteria: |
+        Score on:
+        - Is a DECISIONS.md entry created with DEC-NNN ID? (3pts)
+        - Does the entry include rationale and alternatives considered? (4pts)
+        - Is the entry appended (not replacing existing content)? (3pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2

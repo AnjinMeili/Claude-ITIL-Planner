@@ -1,0 +1,25 @@
+kind: skill
+ref: skills/release-protocol
+scenarios:
+  - name: produces-release-md-with-rollback
+    description: release-protocol should produce RELEASE.md with a numbered runbook and a defined rollback trigger
+    prompt: |
+      Create the release protocol for the time-tracking CLI v1.0. We deploy by
+      publishing to PyPI and updating the Homebrew formula. Rollback means
+      yanking the PyPI release.
+    expectations:
+      keywords:
+        - "RELEASE.md"
+        - "rollback"
+        - "approval"
+        - "monitoring"
+        - "trigger"
+    judge:
+      criteria: |
+        Score on:
+        - Is a numbered runbook produced with expected outputs per step? (3pts)
+        - Is a rollback procedure defined with a specific trigger signal? (4pts)
+        - Are approval gates with required evidence defined? (3pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2

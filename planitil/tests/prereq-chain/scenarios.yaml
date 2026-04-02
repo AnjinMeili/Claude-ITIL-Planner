@@ -1,0 +1,23 @@
+kind: skill
+ref: skills/prereq-chain
+scenarios:
+  - name: defines-and-enforces-phase-gates
+    description: prereq-chain should define gates for a multi-phase workflow and block on unmet criteria
+    prompt: |
+      We have a 3-phase project: Design, Implement, Deploy. Set up prereq-chain
+      gates between phases. The Design phase is not complete yet — no SCOPE.md exists.
+    expectations:
+      keywords:
+        - "GATE"
+        - "BLOCKED"
+        - "SCOPE.md"
+        - "Artifact"
+    judge:
+      criteria: |
+        Score on:
+        - Are completion criteria defined for each phase? (3pts)
+        - Is the Design→Implement gate correctly identified as BLOCKED? (4pts)
+        - Is the specific unmet criterion (missing SCOPE.md) cited in the BLOCKED signal? (3pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2

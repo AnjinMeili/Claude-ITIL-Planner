@@ -1,0 +1,24 @@
+kind: skill
+ref: skills/dev-discipline
+scenarios:
+  - name: produces-dev-spec-with-commit-protocol
+    description: dev-discipline should produce DEV-SPEC.md with commit format and review criteria
+    prompt: |
+      Set up the development discipline for our Python CLI project. We need
+      coding standards, a commit protocol, and a review process.
+    expectations:
+      keywords:
+        - "DEV-SPEC.md"
+        - "conventional"
+        - "Critical"
+        - "Important"
+        - "DEBT"
+    judge:
+      criteria: |
+        Score on:
+        - Is DEV-SPEC.md produced with all four sections? (3pts)
+        - Is the commit protocol in conventional commit format? (3pts)
+        - Are review criteria tiered (Critical/Important/Suggestion)? (4pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2

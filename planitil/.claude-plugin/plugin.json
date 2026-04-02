@@ -1,0 +1,18 @@
+{
+  "name": "planitil",
+  "version": "1.0.0",
+  "description": "End-to-end project planning and quality-gate system for Claude Code. Provides a 12-skill pipeline covering information architecture, quality gates, and memory — plus 6 specialized agents — to produce a complete, file-persisted artifact chain from PROJECT.md through RELEASE.md.",
+  "author": {
+    "name": "planitil contributors"
+  },
+  "license": "Apache-2.0",
+  "skills": "./skills/",
+  "agents": [
+    "./agents/dev-orchestrator.md",
+    "./agents/requirements-analyst.md",
+    "./agents/architect.md",
+    "./agents/code-reviewer.md",
+    "./agents/plan-critic-evaluator.md",
+    "./agents/release-manager.md"
+  ]
+}

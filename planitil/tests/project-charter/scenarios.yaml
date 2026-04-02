@@ -1,0 +1,23 @@
+kind: skill
+ref: skills/project-charter
+scenarios:
+  - name: produces-project-md-for-new-project
+    description: project-charter should produce a structured PROJECT.md when starting a new project
+    prompt: |
+      I want to build a command-line tool that helps developers track time spent
+      on different tasks throughout the day. It should be simple and work offline.
+    expectations:
+      keywords:
+        - "PROJECT.md"
+        - "Problem Statement"
+        - "Success Metrics"
+        - "Constraints"
+    judge:
+      criteria: |
+        Score on:
+        - Is a PROJECT.md artifact produced or initiated? (3pts)
+        - Does it separate problem from solution? (3pts)
+        - Are success metrics measurable outcomes, not features? (4pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2

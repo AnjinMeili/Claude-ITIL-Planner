@@ -1,0 +1,26 @@
+kind: skill
+ref: skills/requirements-spec
+scenarios:
+  - name: produces-spec-with-use-cases
+    description: requirements-spec should produce SPEC.md with actor-action-outcome use cases and testable criteria
+    prompt: |
+      Based on our PROJECT.md for the time-tracking CLI, let's define the requirements.
+      The primary user is a developer. Core workflow: start/stop tracking tasks,
+      view today's summary.
+    expectations:
+      keywords:
+        - "SPEC.md"
+        - "UC-"
+        - "AC-"
+        - "Given"
+        - "When"
+        - "Then"
+    judge:
+      criteria: |
+        Score on:
+        - Are use cases in actor-action-outcome format with UC-NN IDs? (4pts)
+        - Are acceptance criteria in Given/When/Then format with AC-NN-MM IDs? (3pts)
+        - Are non-functional requirements included? (3pts)
+      passing_score: 7.0
+    timeout: 60
+    runs: 2
