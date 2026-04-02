@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp -r /Users/james/.claude/plugins/dev-system/skills/arch-design /Users/james/src/test/planitil/skills/)",
+      "Bash(cp -r /Users/james/.claude/plugins/dev-system/skills/context-keeper /Users/james/src/test/planitil/skills/)",
+      "Bash(cp -r /Users/james/.claude/plugins/dev-system/skills/dev-discipline /Users/james/src/test/planitil/skills/)",
+      "Bash(cp -r /Users/james/.claude/plugins/dev-system/skills/project-charter /Users/james/src/test/planitil/skills/)",
+      "Bash(cp -r /Users/james/.claude/plugins/dev-system/skills/qa-strategy /Users/james/src/test/planitil/skills/)",
+      "Bash(cp /Users/james/.claude/agents/dev-orchestrator.md /Users/james/src/test/planitil/agents/)",
+      "Bash(cp /Users/james/.claude/agents/requirements-analyst.md /Users/james/src/test/planitil/agents/)",
+      "Bash(cp /Users/james/.claude/agents/architect.md /Users/james/src/test/planitil/agents/)",
+      "Bash(cp /Users/james/.claude/agents/code-reviewer.md /Users/james/src/test/planitil/agents/)",
+      "Bash(cp /Users/james/.claude/agents/plan-critic-evaluator.md /Users/james/src/test/planitil/agents/)",
+      "Bash(cp -r /Users/james/.claude/plugins/dev-system/tests/* /Users/james/src/test/planitil/tests/)",
+      "Bash(cp -r /Users/james/.claude/plugins/workflow-quality/tests/* /Users/james/src/test/planitil/tests/)"
+    ]
+  }
+}
